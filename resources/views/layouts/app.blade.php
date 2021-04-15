@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- add icon link -->
-    <link rel = "icon" href = "{{ asset('storage/images/logo.jpg') }}" type = "image/x-icon">
+    <link rel = "icon" href = "{{ asset('public/storage/images/logo.jpg') }}" type = "image/x-icon">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <span>
-                    <img src="{{ asset('storage/images/logo.jpg') }}"  style="width: 40px; border-radius: 75px; border: 2px solid white;"></a>
+                    <img src="{{ asset('public/storage/images/logo.jpg') }}"  style="width: 40px; border-radius: 75px; border: 2px solid white;"></a>
                 </span>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'eSIGUKM') }}
