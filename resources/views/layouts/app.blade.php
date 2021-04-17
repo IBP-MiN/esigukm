@@ -52,11 +52,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @impersonate()
-                        <li class ="navbar-nav mr-auto">
-                            <a href="{{route('admin.impersonate.destroy')}}">Stop Impersonating</a>
-                        </li>
-                        @endimpersonate
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -79,6 +74,9 @@
                                     @hasrole('admin')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Users</a>
                                     @endhasrole
+                                    @impersonate()
+                                    <a class="dropdown-item" href="{{route('admin.impersonate.destroy')}}">Stop Impersonating</a>
+                                    @endimpersonate
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
