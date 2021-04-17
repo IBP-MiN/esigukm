@@ -15,20 +15,3 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
-
-$factory->define(App\User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'matric_no' => $faker->postcode,
-        'phone_no' => $faker->phoneNumber,
-        'sig' => $faker->currencyCode,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
-    ];
-});
-
-$factory->afterCreating(User::class, function($user, $faker){
-    $roles= Role::where('name', 'user')->get();
-    $user->roles()->sync($roles->pluck('id')->toArray());
-});

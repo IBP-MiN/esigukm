@@ -54,6 +54,5 @@ class UsersTableSeeder extends Seeder
         $ajk->roles()->attach($ajkRole);
         $user->roles()->attach($userRole);
 
-        factory(App\User::class, 3)->create();
     }
 }
