@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('https://esigukm.herokuapp.com/').'/storage',
+            'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
