@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- add icon link -->
-        <link rel = "icon" href = "{{ asset('storage/images/logo.jpg') }}" type = "image/x-icon">
+        <link rel = "icon" href = "{{ asset('https://pbs.twimg.com/profile_images/1313769206899380225/U4tdn_Uy_400x400.jpg') }}" type = "image/x-icon">
 
         <!-- Styles -->
         <style>

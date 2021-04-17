@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <span>
-                    <img src="{{ asset('https://pbs.twimg.com/profile_images/1313769206899380225/U4tdn_Uy_400x400.jpg') }}"  style="width: 40px; border-radius: 75px; border: 2px solid white;"></a>
+                    <img src="{{ asset('https://pbs.twimg.com/profile_images/1313769206899380225/U4tdn_Uy_400x400.jpg') }}"  style="width: 40px; border-radius: 75px; border: 2px;"></a>
                 </span>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'eSIGUKM') }}
