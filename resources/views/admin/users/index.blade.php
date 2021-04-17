@@ -14,6 +14,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Matric Number</th>
                             <th scope="col">Phone Number</th>
+                            <th scope="col">SIG</th>
                             <th scope="col">Email</th>
                             <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
@@ -25,6 +26,7 @@
                                 <th>{{$user->name}}</th>
                                 <th>{{$user->matric_no}}</th>
                                 <th>{{$user->phone_no}}</th>
+                                <th>{{$user->sig}}</th>
                                 <th>{{$user->email}}</th>
                                 <th>{{implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</th>
                                 <th>

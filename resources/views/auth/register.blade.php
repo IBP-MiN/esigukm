@@ -54,6 +54,28 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="sig" class="col-md-4 col-form-label text-md-right">{{ __('SIG Group') }}</label>
+                            <div class="col-md-6">
+                                <select name="sig" class="form-control">
+                                    <option value="iMachine">iMachine</option>
+                                    <option value="i-Bisnes">i-Bisnes</option>
+                                    <option value="IMeC">IMeC</option>
+                                    <option value="MAD">MAD</option>
+                                    <option value="OSCApps">OSCApps</option>
+                                    <option value="ARVIS">ARVIS</option>
+                                    <option value="Imagine Cup">Imagine Cup</option>
+                                    <option value="PCC">PCC</option>
+                                    <option value="VIC">VIC</option>
+                                </select>
+                                @if ($errors->has('sig'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('sig') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">

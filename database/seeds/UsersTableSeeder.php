@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
             'name'=> 'Admin',
             'matric_no'=>'K123456',
             'phone_no'=>'0123456789',
+            'sig'=> 'PCC',
             'email'=> 'admin@gmail.com',
             'password'=> bcrypt('admin')
 
@@ -33,6 +34,7 @@ class UsersTableSeeder extends Seeder
             'name'=> 'Ajk',
             'matric_no'=>'A123456',
             'phone_no'=>'0123456789',
+            'sig'=> 'MAD',
             'email'=> 'ajk@gmail.com',
             'password'=> bcrypt('ajk')
 
@@ -42,6 +44,7 @@ class UsersTableSeeder extends Seeder
             'name'=> 'User',
             'matric_no'=>'U123456',
             'phone_no'=>'0123456789',
+            'sig'=> 'VIC',
             'email'=> 'user@gmail.com',
             'password'=> bcrypt('user')
 

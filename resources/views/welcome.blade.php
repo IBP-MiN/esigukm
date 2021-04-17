@@ -11,11 +11,14 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- add icon link -->
         <link rel = "icon" href = "{{ asset('https://pbs.twimg.com/profile_images/1313769206899380225/U4tdn_Uy_400x400.jpg') }}" type = "image/x-icon">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background: url("http://cacult.com/wp-content/uploads/2020/10/getty_769729163_200013341653767170567_404088.jpg") no-repeat center center fixed;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -52,7 +55,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #141414;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -64,6 +67,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+}
         </style>
     </head>
     <body>
