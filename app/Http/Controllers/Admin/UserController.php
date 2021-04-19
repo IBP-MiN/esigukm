@@ -31,7 +31,7 @@ class UserController extends Controller
         if(Auth::user()->id == $id){
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to edit yourself.');
         }
-        return view('admin.users.edit')->with(['user'=> User::find($id), 'roles'=> Role::all()])->first();
+        return view('admin.users.edit')->with(['user'=> User::find($id), 'roles'=> Role::all()])->pluck($id)->first();
     }
 
     /**
