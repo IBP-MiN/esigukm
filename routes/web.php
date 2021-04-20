@@ -30,3 +30,7 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->
 });
 
 Route::get('/admin/impersonate/destory','Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
+
+// User
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');

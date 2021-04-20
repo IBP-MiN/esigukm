@@ -71,6 +71,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     @hasrole('admin')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Users</a>
                                     @endhasrole
