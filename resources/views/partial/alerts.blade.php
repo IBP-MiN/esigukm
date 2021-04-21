@@ -11,13 +11,13 @@
 @endif
 
 <script>
-    $(".alert").fadeTo(2000, 500).slideUp(700, function(){
+    $(".alert").fadeTo(2000, 800).slideUp(1000, function(){
     $(".alert").slideUp(1000);
 });
 </script>
 
 <script>
-    $(".success").fadeTo(2000, 500).slideUp(700, function(){
+    $(".success").fadeTo(2000, 800).slideUp(1000, function(){
     $(".success").slideUp(1000);
 });
 </script>
