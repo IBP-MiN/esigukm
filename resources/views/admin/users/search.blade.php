@@ -5,20 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Manage Users</div>
-
-                <div class="card-body">
-                    <form action="{{ route('admin.search') }}" method="GET" role="search">
-                        {{ csrf_field() }}
-                        <div class="input-group">
-                            <input type="search" class="form-control" name="query"
-                                placeholder="Search users by  Name or Matric Number"> <span class="input-group-btn">
-                                <button type="submit" class="btn btn-info">
-                                    Search
-                                </button>
-                            </span>
-                        </div>
-                    </form>
+                <div class="card-header">List Users</div>
                     <table class="table">
                         <thead>
                           <tr>
@@ -55,9 +42,11 @@
                                 </th>
                             </tr>
                             @endforeach
+                            <a class="btn btn-secondary" href="{{ route('admin.users.index') }}">
+                                {{ __('Back') }}
+                            </a>
                         </tbody>
                       </table>
-                      {{$users->links() }}
                 </div>
             </div>
         </div>

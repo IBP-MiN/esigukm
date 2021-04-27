@@ -27,10 +27,17 @@ Route::get('/admin', function(){
 Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->name('admin.')->group(function(){
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
     Route::get('impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
+    Route::get('/search', 'UserController@search')->name('search');
 });
 
 Route::get('/admin/impersonate/destory','Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
 
-// Profile 
+// Profile for admin, ajk and user
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
+
+//Meeting
+
+
+// Confirmation for the meeting
+

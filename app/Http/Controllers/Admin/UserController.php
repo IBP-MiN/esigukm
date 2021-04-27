@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('users', User::paginate(5));
+        return view('admin.users.index')->with('users', User::paginate(10));
     }
 
     /**
@@ -71,5 +72,15 @@ class UserController extends Controller
             return redirect()-> route('admin.users.index')->with('success', 'User has been deleted.');
         }
         return redirect()-> route('admin.users.index')->with('warning', 'This user cannot be deleted.');
+    }
+
+    public function search(){
+
+        $search_text = $_GET['query'];
+        $users = User::where('matric_no', 'LIKE', '%'.$search_text.'%')
+                      ->orWhere('name', 'LIKE', '%'.$search_text.'%')
+                      ->get();
+
+        return view('admin.users.search', compact('users'));
     }
 }

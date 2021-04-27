@@ -36,7 +36,7 @@
                                         <div class="form-group row">
                                             <label for="matric_no" class="col-md-3 col-form-label text-md-right">Matric Number</label>
                                             <div class="col-md-5">
-                                                <input id="matric_no" type="text" class="form-control" name="matric_no" value="{{ old('matric_no', auth()->user()->matric_no) }}" disabled>
+                                                <input id="matric_no" type="text" class="form-control" name="matric_no" value="{{ old('matric_no', auth()->user()->matric_no) }}" readonly>
                                             </div>
                                         </div>
 
@@ -50,14 +50,14 @@
                                         <div class="form-group row">
                                             <label for="email" class="col-md-3 col-form-label text-md-right">Email</label>
                                             <div class="col-md-5">
-                                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}" disabled>
+                                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}" readonly>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="sig" class="col-md-3 col-form-label text-md-right">SIG Group</label>
                                             <div class="col-md-5">
-                                                <input id="sig" type="text" class="form-control" name="sig" value="{{ old('sig', auth()->user()->sig) }}" disabled>
+                                                <input id="sig" type="text" class="form-control" name="sig" value="{{ old('sig', auth()->user()->sig) }}" readonly>
                                             </div>
                                         </div>
 
