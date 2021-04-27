@@ -11,7 +11,7 @@
                     <form action="{{ route('admin.search') }}" method="GET" role="search">
                         {{ csrf_field() }}
                         <div class="input-group">
-                            <input type="search" class="form-control" name="query"
+                            <input type="search" class="form-control" name="query" required
                                 placeholder="Search users by  Name or Matric Number"> <span class="input-group-btn">
                                 <button type="submit" class="btn btn-info">
                                     Search

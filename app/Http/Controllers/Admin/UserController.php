@@ -77,10 +77,14 @@ class UserController extends Controller
     public function search(){
 
         $search_text = $_GET['query'];
+        if($search_text != ""){
         $users = User::where('matric_no', 'LIKE', '%'.$search_text.'%')
                       ->orWhere('name', 'LIKE', '%'.$search_text.'%')
                       ->get();
 
+        if (count($users)> 0)
         return view('admin.users.search', compact('users'));
+        }
+        return redirect()->route('admin.users.index')->with('warning', 'User not found!');
     }
 }
