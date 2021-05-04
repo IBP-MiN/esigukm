@@ -14,8 +14,10 @@
                             <th scope="col">Phone Number</th>
                             <th scope="col">SIG</th>
                             <th scope="col">Email</th>
+                            @hasrole('admin')
                             <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
+                            @endhasrole
                           </tr>
                         </thead>
                         <tbody>
@@ -26,6 +28,7 @@
                                 <th>{{$user->phone_no}}</th>
                                 <th>{{$user->sig}}</th>
                                 <th>{{$user->email}}</th>
+                                @hasrole('admin')
                                 <th>{{implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</th>
                                 <th>
                                     <a href="{{route('admin.users.edit', $user->id)}}" class="float-left">
@@ -40,6 +43,7 @@
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </th>
+                                @endhasrole
                             </tr>
                             @endforeach
                             <a class="btn btn-secondary" href="{{ route('admin.users.index') }}">

@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                @hasrole('admin')
                 <div class="card-header">Manage Users</div>
+                @endhasrole
+
+                @hasrole('ajk')
+                <div class="card-header">View Users</div>
+                @endhasrole
 
                 <div class="card-body">
                     <form action="{{ route('admin.search') }}" method="GET" role="search">
@@ -27,8 +33,10 @@
                             <th scope="col">Phone Number</th>
                             <th scope="col">SIG</th>
                             <th scope="col">Email</th>
+                            @hasrole('admin')
                             <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
+                            @endhasrole
                           </tr>
                         </thead>
                         <tbody>
@@ -39,6 +47,7 @@
                                 <th>{{$user->phone_no}}</th>
                                 <th>{{$user->sig}}</th>
                                 <th>{{$user->email}}</th>
+                                @hasrole('admin')
                                 <th>{{implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</th>
                                 <th>
                                     <a href="{{route('admin.users.edit', $user->id)}}" class="float-left">
@@ -53,6 +62,7 @@
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </th>
+                                @endhasrole
                             </tr>
                             @endforeach
                         </tbody>

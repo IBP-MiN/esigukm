@@ -76,6 +76,14 @@
                                     <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     @hasrole('admin')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Users</a>
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Meeting</a>
+                                    @endhasrole
+                                    @hasrole('ajk')
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Meeting</a>
+                                    @endhasrole
+                                    @hasrole('user')
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">My Meeting</a>
                                     @endhasrole
                                     @impersonate()
                                     <a class="dropdown-item" href="{{route('admin.impersonate.destroy')}}">Stop Impersonating</a>
