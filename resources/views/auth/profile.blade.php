@@ -43,7 +43,7 @@
                                         <div class="form-group row">
                                             <label for="phone_no" class="col-md-3 col-form-label text-md-right">Phone Number</label>
                                             <div class="col-md-5">
-                                                <input id="phone_no" type="text" class="form-control" name="phone_no" value="{{ old('phone_no', auth()->user()->phone_no) }}">
+                                                <input maxlength="11" pattern="[0-9]+" id="phone_no" type="text" class="form-control" name="phone_no" value="{{ old('phone_no', auth()->user()->phone_no) }}">
                                             </div>
                                         </div>
 

@@ -17,12 +17,13 @@ class UsersTableSeeder extends Seeder
         DB::table('role_user')->truncate();
 
         $adminRole = Role::where('name', 'admin')->first();
+        $lecturerRole = Role::where('name', 'lecturer')->first();
         $ajkRole = Role::where('name', 'ajk')->first();
         $userRole = Role::where('name', 'user')->first();
 
         $admin = User::create([
             'name'=> 'Admin',
-            'matric_no'=>'K123456',
+            'matric_no'=>'A123456',
             'phone_no'=>'0123456789',
             'sig'=> 'PCC',
             'email'=> 'admin@gmail.com',
@@ -30,9 +31,19 @@ class UsersTableSeeder extends Seeder
 
         ]);
 
+        $lecturer = User::create([
+            'name'=> 'Lecturer',
+            'matric_no'=>'K123456',
+            'phone_no'=>'0123456789',
+            'sig'=> 'MAD',
+            'email'=> 'lecturer@gmail.com',
+            'password'=> bcrypt('lecturer')
+
+        ]);
+
         $ajk = User::create([
             'name'=> 'Ajk',
-            'matric_no'=>'A123456',
+            'matric_no'=>'AJK123456',
             'phone_no'=>'0123456789',
             'sig'=> 'MAD',
             'email'=> 'ajk@gmail.com',
@@ -51,6 +62,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $admin->roles()->attach($adminRole);
+        $lecturer->roles()->attach($lecturerRole);
         $ajk->roles()->attach($ajkRole);
         $user->roles()->attach($userRole);
 

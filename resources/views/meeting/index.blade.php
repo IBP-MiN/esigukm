@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Manage Meeting</div>
+                <div class="card-header">Meeting List</div>
 
                 <div class="card-body">
                     <form action="{{ route('admin.search') }}" method="GET" role="search">

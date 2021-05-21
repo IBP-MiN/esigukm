@@ -9,7 +9,7 @@
                 <div class="card-header">Manage Users</div>
                 @endhasrole
 
-                @hasrole('ajk')
+                @hasrole('ajk','lecturer')
                 <div class="card-header">View Users</div>
                 @endhasrole
 
@@ -28,6 +28,7 @@
                     <table class="table">
                         <thead>
                           <tr>
+                            <th scope="col">No.</th>
                             <th scope="col">Name</th>
                             <th scope="col">Matric Number</th>
                             <th scope="col">Phone Number</th>
@@ -40,8 +41,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($users as $index => $user)
                             <tr>
+                                <th>{{$index +1}}</th>
                                 <th>{{$user->name}}</th>
                                 <th>{{$user->matric_no}}</th>
                                 <th>{{$user->phone_no}}</th>

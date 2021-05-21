@@ -80,7 +80,11 @@
                                     @endhasrole
                                     @hasrole('ajk')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">View Meeting</a>
+                                    @endhasrole
+                                    @hasrole('lecturer')
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">View Meeting</a>
                                     @endhasrole
                                     @hasrole('user')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">My Meeting</a>
