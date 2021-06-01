@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         User::truncate();
         DB::table('role_user')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        
 
         $adminRole = Role::where('name', 'admin')->first();
         $lecturerRole = Role::where('name', 'lecturer')->first();
@@ -78,6 +78,8 @@ class UsersTableSeeder extends Seeder
         $lecturer->roles()->attach($lecturerRole);
         $ajk->roles()->attach($ajkRole);
         $user->roles()->attach($userRole);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
     }
 }

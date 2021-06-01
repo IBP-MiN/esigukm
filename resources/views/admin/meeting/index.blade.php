@@ -65,8 +65,8 @@
                                     <a href="{{route('admin.meeting.show', $meeting->id)}}" class="float-left">
                                         <button type="button" class="btn btn-success btn-sm"> View</button>
                                     </a>
-                                    <a href="{{route('admin.meeting.update', $meeting->id)}}" class="float-left">
-                                        <button type="button" class="btn btn-warning btn-sm"> Update</button>
+                                    <a href="{{route('admin.meeting.edit', $meeting->id)}}" class="float-middle">
+                                        <button type="button" class="btn btn-warning btn-sm"> Edit</button>
                                     </a>
                                     <form action="{{route('admin.meeting.destroy', $meeting->id) }}" method="POST" class="float-left">
                                         @csrf
@@ -81,8 +81,8 @@
                                     <a href="{{route('admin.meeting.show', $meeting->id)}}" class="float-left">
                                         <button type="button" class="btn btn-success btn-sm"> View</button>
                                     </a>
-                                    <a href="{{route('admin.meeting.update', $meeting->id)}}" class="float-left">
-                                        <button type="button" class="btn btn-warning btn-sm"> Update</button>
+                                    <a href="{{route('admin.meeting.edit', $meeting->id)}}" class="float-left">
+                                        <button type="button" class="btn btn-warning btn-sm"> Edit</button>
                                     </a>
                                     <form action="{{route('admin.meeting.destroy', $meeting->id) }}" method="POST" class="float-left">
                                         @csrf

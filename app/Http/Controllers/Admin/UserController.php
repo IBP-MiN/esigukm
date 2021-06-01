@@ -130,7 +130,7 @@ class UserController extends Controller
             ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->file->store('storage/images', 'public');
+            $request->file->store('/storage/images', 'public');
 
             // Store the record, using the new file hashname which will be it's new filename identity.
             $meeting = new Meeting([
@@ -151,9 +151,12 @@ class UserController extends Controller
         return redirect()->route('admin.meeting')->with('success', 'Meeting has been created.');
     }
 
-    public function editMeeting()
+    public function editMeeting($id)
     {
-        return view('admin.meeting.edit');
+        if(Auth::user()->id == $id){
+            return redirect()->route('admin.meeting')->with('warning', 'You are not allowed to edit this meeting.');
+        }
+        return view('admin.meeting.edit')->with(['user_id'=> User::find($id), 'roles'=> Role::all()]);
     }
 
     public function updateMeeting()
