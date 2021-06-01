@@ -28,6 +28,16 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
     Route::get('impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
     Route::get('/search', 'UserController@search')->name('search');
+    Route::get('/meeting', 'UserController@indexMeeting')->name('meeting');
+    Route::get('/meeting/create', 'UserController@createMeeting')->name('meeting.create');
+    Route::post('/meeting/store', 'UserController@storeMeeting')->name('meeting.store');
+    Route::get('/meeting/show/{show}', 'UserController@showMeeting')->name('meeting.show');
+    Route::get('/meeting/edit/', 'UserController@editMeeting')->name('meeting.edit');
+    Route::post('/meeting/update/', 'UserController@updateMeeting')->name('meeting.update');
+    Route::post('/meeting/destroy', 'UserController@destroyMeeting')->name('meeting.destroy');
+    Route::post('/meeting/search', 'UserController@searchMeeting')->name('meeeting.search');
+    
+    
 });
 
 Route::get('/admin/impersonate/destory','Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
@@ -37,7 +47,6 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
 
 //Meeting
-
-
+Route::get('/meeting', 'Homecontroller@userMeeting')->name('meeting.index');
 // Confirmation for the meeting
 

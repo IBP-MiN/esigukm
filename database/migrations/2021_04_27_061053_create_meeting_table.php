@@ -16,15 +16,18 @@ class CreateMeetingTable extends Migration
         Schema::create('meeting', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');    
-            $table->longText('description');
-            $table->date('date_start');
-            $table->date('date_end');
+            $table->string('description');
+            $table->date('meeting_date');
+            $table->time('meeting_start_time');
+            $table->time('meeting_end_time');
             $table->string('location');
-            $table->integer('live')->default('0');
             $table->string('sig');
-            $table->unsignedInteger('user_id')->index();
-            $table->string('image')->nullable()->default('default.jpg');
+            $table->string('file_path');
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
+        
     }
 
     /**

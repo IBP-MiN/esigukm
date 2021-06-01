@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Meeting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -18,8 +20,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        
         return view('admin.users.index')->with('users', User::paginate(10));
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -87,4 +92,88 @@ class UserController extends Controller
         }
         return redirect()->route('admin.users.index')->with('warning', 'User not found!');
     }
+    
+    // MEETING
+
+    public function indexMeeting()
+    {
+        $meeting = Meeting::all();
+        return view('admin.meeting.index')->with('meetings', Meeting::paginate(10));
+    }
+
+    public function createMeeting()
+    {
+        $meeting = Meeting::all();
+        $users = User::all();
+        return view('admin.meeting.create');
+    }
+
+    public function storeMeeting(Request $request)
+    {
+
+        // Validate the inputs
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'meeting_date' => 'required',
+            'meeting_start_time' => 'required',
+            'meeting_end_time' => 'required',
+            'location' => 'required',
+            'sig' => 'required',
+        ]);
+
+        // ensure the request has a file before we attempt anything else.
+        if ($request->hasFile('file')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->file->store('storage/images', 'public');
+
+            // Store the record, using the new file hashname which will be it's new filename identity.
+            $meeting = new Meeting([
+                "title" => $request->get('title'),
+                "description" => $request->get('description'),
+                "meeting_date" => $request->get('meeting_date'),
+                "meeting_start_time" => $request->get('meeting_start_time'),
+                "meeting_end_time" => $request->get('meeting_end_time'),
+                "location" => $request->get('location'),
+                "sig" => $request->get('sig'),
+                "file_path" => $request->file->hashName(),
+                "user_id"=>$request->user()->id,
+            ]);
+
+            $meeting->save();
+        }
+
+        return redirect()->route('admin.meeting')->with('success', 'Meeting has been created.');
+    }
+
+    public function editMeeting()
+    {
+        return view('admin.meeting.edit');
+    }
+
+    public function updateMeeting()
+    {
+        return view('admin.meeting.update');
+    }
+
+    public function destroyMeeting()
+    {
+        return view('admin.meeting.destroy');
+    }
+
+    public function searchMeeting()
+    {
+        return view('admin.meeting.search');
+    }
+
+    public function showMeeting()
+    {
+        return view('admin.meeting.show');
+    }
+
 }

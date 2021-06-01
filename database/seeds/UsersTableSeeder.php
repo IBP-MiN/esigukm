@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
+use App\Meeting;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,8 +14,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         User::truncate();
         DB::table('role_user')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
         $adminRole = Role::where('name', 'admin')->first();
         $lecturerRole = Role::where('name', 'lecturer')->first();
@@ -58,6 +61,16 @@ class UsersTableSeeder extends Seeder
             'sig'=> 'VIC',
             'email'=> 'user@gmail.com',
             'password'=> bcrypt('user')
+
+        ]);
+
+        $user = User::create([
+            'name'=> 'Nur Fitri Aini Binti Mazalan',
+            'matric_no'=>'A175316',
+            'phone_no'=>'01126118492',
+            'sig'=> 'VIC',
+            'email'=> 'a175316@siswa.ukm.edu.my',
+            'password'=> bcrypt('aini')
 
         ]);
 

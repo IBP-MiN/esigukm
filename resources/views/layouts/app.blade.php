@@ -15,6 +15,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     
 
     <!-- Fonts -->
@@ -27,6 +28,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
     <style>
         html, body {
@@ -76,18 +78,18 @@
                                     <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     @hasrole('admin')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">Manage Meeting</a>
                                     @endhasrole
                                     @hasrole('ajk')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">View Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">View Meeting</a>
                                     @endhasrole
                                     @hasrole('lecturer')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">View Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">View Meeting</a>
                                     @endhasrole
                                     @hasrole('user')
-                                    <a class="dropdown-item" href="{{route('admin.users.index')}}">My Meeting</a>
+                                    <a class="dropdown-item" href="{{route('meeting.index')}}">My Meeting</a>
                                     @endhasrole
                                     @impersonate()
                                     <a class="dropdown-item" href="{{route('admin.impersonate.destroy')}}">Stop Impersonating</a>

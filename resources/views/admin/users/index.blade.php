@@ -9,9 +9,14 @@
                 <div class="card-header">Manage Users</div>
                 @endhasrole
 
-                @hasrole('ajk','lecturer')
+                @hasrole('lecturer')
                 <div class="card-header">View Users</div>
                 @endhasrole
+
+                @hasrole('ajk')
+                <div class="card-header">View Users</div>
+                @endhasrole
+                
 
                 <div class="card-body">
                     <form action="{{ route('admin.search') }}" method="GET" role="search">
@@ -58,7 +63,7 @@
                                     <a href="{{route('admin.impersonate', $user->id)}}" class="float-left">
                                         <button type="button" class="btn btn-success btn-sm"> Impersonate User</button>
                                     </a>
-                                    <form action="{{route('admin.users.destroy', $user->id) }}" method="POST" class="float-left">
+                                    <form action="{{route('admin.users.destroy', $user->id) }}" method="POST" class="float-middle">
                                         @csrf
                                         {{method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

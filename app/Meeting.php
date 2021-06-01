@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meeting extends Model
 {
-    protected $fillable = ['title','user_id','location','date_start','date_end','sig','description','image','live','phone_no'];
+    protected $fillable = ['title', 'description', 'meeting_date', 'meeting_start_time', 'meeting_end_time', 'location', 'sig', 'file_path', 'user_id'
+];
 
-    // protected $guard = ['user_id'];
 
     protected $table = 'meeting';
 
     public function users(){
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
         
     }
 }
