@@ -150,18 +150,25 @@ class UserController extends Controller
 
         return redirect()->route('admin.meeting')->with('success', 'Meeting has been created.');
     }
+    public function showMeeting($id)
+    {
+        $meeting = Meeting::find($id);
+        
+        return view('admin.meeting.show', ['meeting' => $meeting]);
+    }
 
     public function editMeeting($id)
     {
-        if(Auth::user()->id == $id){
-            return redirect()->route('admin.meeting')->with('warning', 'You are not allowed to edit this meeting.');
-        }
-        return view('admin.meeting.edit')->with(['user_id'=> User::find($id), 'roles'=> Role::all()]);
+        $meeting = Meeting::find($id);
+
+        return view('admin.meeting.edit')->with('meeting', $meeting);
     }
 
     public function updateMeeting()
     {
-        return view('admin.meeting.update');
+        $meeting = Meeting::find($id);
+        
+        return redirect()->route('admin.meeting.update')->with('success', 'Meeting has been updated.');
     }
 
     public function destroyMeeting()
@@ -174,9 +181,6 @@ class UserController extends Controller
         return view('admin.meeting.search');
     }
 
-    public function showMeeting()
-    {
-        return view('admin.meeting.show');
-    }
+    
 
 }

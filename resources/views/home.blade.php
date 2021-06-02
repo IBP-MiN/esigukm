@@ -37,10 +37,24 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{$meeting->title}}</h5>
                                     <p class="card-text">{{$meeting->description}}</p> 
+                                    <p class="card-text">SIG: {{$meeting->sig}}</p> 
                                     <div class="d-flex justify-content-between align-items-center">
+                                        
                                         <div class="btn-group">
-                                            <a href="/meetings/{{ $meeting->id }}" class="btn btn-sm btn-outline-success">View</a>
+                                            @hasrole('admin')
+                                            <a href="{{route('admin.meeting.show', $meeting->id)}}" class="btn btn-sm btn-outline-success">View</a>
+                                            @endhasrole
+                                            @hasrole('lecturer')
+                                            <a href="{{route('admin.meeting.show', $meeting->id)}}" class="btn btn-sm btn-outline-success">View</a>
+                                            @endhasrole
+                                            @hasrole('ajk')
+                                            <a href="{{route('admin.meeting.show', $meeting->id)}}" class="btn btn-sm btn-outline-success">View</a>
+                                            @endhasrole
+                                            @hasrole('user')
+                                            <a href="{{route('meeting.show', $meeting->id)}}" class="btn btn-sm btn-outline-success">View</a>
+                                            @endhasrole
                                         </div>
+                                        
                                         <small class="text-muted">{{ \Carbon\Carbon::parse($meeting->meeting_date)->format('d/m/Y')}}</small>
                                     </div>
                                 </div>

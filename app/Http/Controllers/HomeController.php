@@ -39,4 +39,11 @@ class HomeController extends Controller
         $meeting = Meeting::all();
         return view('meeting.index')->with('meetings', Meeting::paginate(10));
     }
+
+    public function showMeeting($user_id){
+
+        $meeting = Meeting::find($user_id);
+        return view('meeting.show')->with('meeting', $meeting);
+
+    }
 }

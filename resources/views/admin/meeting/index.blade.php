@@ -36,7 +36,8 @@
                             </div>
                         </form>
                         <table class="table">
-                            <thead>
+                            <br>
+                            <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Title</th>
