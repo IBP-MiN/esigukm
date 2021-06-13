@@ -32,7 +32,7 @@
 
     <style>
         html, body {
-            background: url("https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat center center fixed;
+            background: url("https://cdn2.hubspot.net/hubfs/202339/canvas/images/parallax/Website-Design-Background.png") no-repeat center center fixed;
             margin: 0;
         }
     </style>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Meeting;
+use App\Follower;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -44,6 +45,19 @@ class HomeController extends Controller
 
         $meeting = Meeting::find($user_id);
         return view('meeting.show')->with('meeting', $meeting);
+
+    }
+
+    public function attdMeeting(Request $request){
+
+        $attd = new Follower([
+            "meeting_id"=>$request->get()->id,
+            "user_id"=>$request->get()->user_id,
+        ]);
+
+        $attd->save();
+
+        return redirect()->route('home')->with('success', 'Thank you for attend this meeting.');
 
     }
 }

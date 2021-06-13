@@ -19,7 +19,7 @@
         <style>
             html, body {
                 background: url("http://cacult.com/wp-content/uploads/2020/10/getty_769729163_200013341653767170567_404088.jpg") no-repeat center center fixed;
-                color: #636b6f;
+                color: #66a1be;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -57,7 +57,7 @@
             .links > a {
                 color: #000000;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 16px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;

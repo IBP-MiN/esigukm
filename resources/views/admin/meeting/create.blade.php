@@ -119,6 +119,7 @@
                                 </div>
                             </div>
 
+                            @hasrole('admin')
                             <div class="form-group row">
                                 <label for="sig"
                                     class="col-md-4 col-form-label text-md-right">{{ __('SIG Group') }}</label>
@@ -141,6 +142,29 @@
                                     @endif
                                 </div>
                             </div>
+                            @endhasrole
+
+                            @hasrole('lecturer')
+                            <div class="form-group row">
+                                <label for="sig" class="col-md-4 col-form-label text-md-right">SIG Group </label>
+                                <div class="col-md-6">
+                                    <input id="sig" type="text" class="form-control"
+                                        name="sig"
+                                        value="{{ old('sig', auth()->user()->sig) }}" readonly
+                                        required>
+                                    @if ($errors->has('sig'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('sig') }}</strong>
+                                        </span>
+                                    @endif
+                                    @if ($errors->has('sig'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('sig') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            @endhasrole
 
                             <div class="form-group row">
                                 <label for="file" class="col-md-4 col-form-label text-md-right">Image</label>

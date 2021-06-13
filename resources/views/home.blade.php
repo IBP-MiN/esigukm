@@ -13,18 +13,6 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-
-                        <form action="{{ route('admin.search') }}" method="GET" role="search">
-                          {{ csrf_field() }}
-                          <div class="input-group">
-                              <input type="search" class="form-control" name="query" required
-                                  placeholder="Search meeting by Title"> <span class="input-group-btn">
-                                  <button type="submit" class="btn btn-info">
-                                      Search
-                                  </button>
-                              </span>
-                          </div>
-                      </form>
                       <br>
 
                       <div class="row">
@@ -32,11 +20,10 @@
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"
-                                     src="storage/images/{{$meeting->file_path}}" height="180px"
+                                     src="storage/images/{{$meeting->file_path}}" height="200px"
                                      data-holder-rendered="true">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$meeting->title}}</h5>
-                                    <p class="card-text">{{$meeting->description}}</p> 
+                                    <h5 class="card-title">Title: {{$meeting->title}}</h5>
                                     <p class="card-text">SIG: {{$meeting->sig}}</p> 
                                     <div class="d-flex justify-content-between align-items-center">
                                         
@@ -61,7 +48,16 @@
                             </div>
                         </div>
                         @empty
-                            <h5>No meeting available currently </h5>
+                        <div class="card">
+                            <div class="card-header">
+                              No Meeting Available
+                            </div>
+                            <div class="card-body">
+                              <blockquote class="blockquote mb-0">
+                                <p>There are no meeting current available. Please try again on the next time.</p>
+                              </blockquote>
+                            </div>
+                          </div>
                         @endforelse
                     </div>
                         

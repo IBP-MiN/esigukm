@@ -40,12 +40,12 @@
                                     <th>{{$meeting->title}}</th>
                                     <th>{{$meeting->description}}</th>
                                     <th>{{ \Carbon\Carbon::parse($meeting->meeting_date)->format('d/m/Y')}}</th>
-                                    <th>{{ \Carbon\Carbon::parse($meeting->meeting_start_time)->format('h:i')}}</th>
-                                    <th>{{ \Carbon\Carbon::parse($meeting->meeting_end_time)->format('h:i')}}</th>
+                                    <th>{{ \Carbon\Carbon::parse($meeting->meeting_start_time)->format('g:ia')}}</th>
+                                    <th>{{ \Carbon\Carbon::parse($meeting->meeting_end_time)->format('g:ia')}}</th>
                                     <th>{{$meeting->location}}</th>
                                     <th>{{$meeting->sig}}</th>
                                     <th>
-                                        <a href="{{route('admin.meeting.show', $meeting->id)}}" class="float-left">
+                                        <a href="{{route('meeting.show', $meeting->id)}}" class="float-left">
                                             <button type="button" class="btn btn-success btn-sm"> View</button>
                                         </a>
                                     </th>

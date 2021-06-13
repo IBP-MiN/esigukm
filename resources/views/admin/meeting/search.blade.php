@@ -2,46 +2,20 @@
 
 @section('content')
     <div class="container">
+        @if(isset($details))
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    @hasrole('admin')
-                    <div class="card-header">Manage Meeting</div>
-                    <a class="btn btn-primary" href="{{ route('admin.meeting.create') }}">
-                        {{ __('Create New Meeting') }}
+                    <div class="card-header">List Meetings</div>
+                    <a class="btn btn-secondary" href="{{ route('admin.meeting') }}">
+                        {{ __('Back') }}
                     </a>
-                    @endhasrole
-
-                    @hasrole('lecturer')
-                    <div class="card-header">View Meetings</div>
-                    <a class="btn btn-primary" href="{{ route('admin.meeting.create') }}">
-                        {{ __('Create New Meeting') }}
-                    </a>
-                    @endhasrole
-
-                    @hasrole('ajk')
-                    <div class="card-header">View Meetings</div>
-                    @endhasrole
 
                     <div class="card-body">
-                        <form action="{{ route('admin.meeting.search') }}" method="POST" role="search">
-                            {{ csrf_field() }}
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="q" required
-                                    placeholder="Search meeting by Title or SIG"> <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-info">
-                                        Search
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-                        <br>
-
                         <table class="table">
                             <br>
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">No.</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Date</th>
@@ -53,14 +27,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($meetings as $index => $meeting)
+                                @foreach($details as $meeting)
                             <tr>
-                                <th>{{$index +1}}</th>
                                 <th>{{$meeting->title}}</th>
                                 <th>{{$meeting->description}}</th>
                                 <th>{{ \Carbon\Carbon::parse($meeting->meeting_date)->format('d/m/Y')}}</th>
-                                <th>{{ \Carbon\Carbon::parse($meeting->meeting_start_time)->format('g:i a')}}</th>
-                                <th>{{ \Carbon\Carbon::parse($meeting->meeting_end_time)->format('g:i a')}}</th>
+                                <th>{{ \Carbon\Carbon::parse($meeting->meeting_start_time)->format('g:ia')}}</th>
+                                <th>{{ \Carbon\Carbon::parse($meeting->meeting_end_time)->format('g:ia')}}</th>
                                 <th>{{$meeting->location}}</th>
                                 <th>{{$meeting->sig}}</th>
                                 @hasrole('admin')
@@ -88,6 +61,7 @@
                                     </a>
                                     <form action="{{route('admin.meeting.destroy', $meeting->id) }}" method="POST" class="float-left">
                                         @csrf
+                                        {{method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </th>
@@ -107,6 +81,8 @@
                             @endforeach
                             </tbody>
                         </table>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

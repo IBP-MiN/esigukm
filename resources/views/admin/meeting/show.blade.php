@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Meeting Details</div>
-                    <a class="btn btn-secondary" href="{{ route('admin.meeting') }}">
+                    <a class="btn btn-secondary" href="{{ route('home') }}">
                         {{ __('Back') }}
                     </a>
                     <div class="card-body">
@@ -20,56 +20,36 @@
                                             </button>
                                             <ul>
                                                 @foreach ($errors->all() as $error)
-                                                    <li>
+                                                    <li>s
                                                         {{ $error }}
                                                     </li>
                                                 @endforeach
                                             </ul>
                                         </div>
                                     @endif
-                                    <form action="{{ route('profile.update') }}" method="POST" role="form" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group row">
-                                            <label for="name" class="col-md-3 col-form-label text-md-right">Title</label>
-                                            <div class="col-md-5">
-                                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', auth()->user()->name) }}" required>
+                                    <div class="card mb-3">
+                                        <img src="{{ asset('storage/images/'.$meeting->file_path) }}" class="card-img-top" height="750px" width="700px">
+                                        <br>
+                                        <div class="card text-center">
+                                            <div class="card-header"> Meeting Details
                                             </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="matric_no" class="col-md-3 col-form-label text-md-right">Matric Number</label>
-                                            <div class="col-md-5">
-                                                <input id="matric_no" type="text" class="form-control" name="matric_no" value="{{ old('matric_no', auth()->user()->matric_no) }}" readonly>
+                                            <div class="card-body">
+                                              <h3 class="card-title">Title: {{$meeting->title}}</h3>
+                                              <p class="card-text"> Description: {{$meeting->description}}</p>
+                                              <p class="card-text">Date: {{ \Carbon\Carbon::parse($meeting->meeting_date)->format('d/m/Y') }}</p>
+                                              <p class="card-text">Time Start: {{ \Carbon\Carbon::parse($meeting->meeting_start_time)->format('g:i a') }}</p>
+                                              <p class="card-text">Time End: {{ \Carbon\Carbon::parse($meeting->meeting_end_time)->format('g:i a') }}</p>
+                                              <p class="card-text">Location: {{$meeting->location}}</p>
+                                              <p class="card-text">SIG: {{$meeting->sig}}</p>
+                                              <form action="{{route('meeting.attend', $meeting->id, $meeting->user_id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-secondary">Attend</button>
+                                            </form>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="phone_no" class="col-md-3 col-form-label text-md-right">Phone Number</label>
-                                            <div class="col-md-5">
-                                                <input maxlength="11" pattern="[0-9]+" id="phone_no" type="text" class="form-control" name="phone_no" value="{{ old('phone_no', auth()->user()->phone_no) }}">
+                                            <div class="card-footer text-muted">
                                             </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="email" class="col-md-3 col-form-label text-md-right">Email</label>
-                                            <div class="col-md-5">
-                                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="sig" class="col-md-3 col-form-label text-md-right">SIG Group</label>
-                                            <div class="col-md-5">
-                                                <input id="sig" type="text" class="form-control" name="sig" value="{{ old('sig', auth()->user()->sig) }}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row mb-0 mt-5">
-                                            <div class="col-md-8 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">Update Profile</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                          </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
