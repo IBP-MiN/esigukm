@@ -173,6 +173,27 @@
                                         </div>
                                         @endhasrole
 
+                                        @hasrole('ajk')
+                                        <div class="form-group row">
+                                            <label for="sig" class="col-md-3 col-form-label text-md-right">SIG Group
+                                            </label>
+                                            <div class="col-md-5">
+                                                <input id="sig" type="text" class="form-control" name="sig"
+                                                    value="{{ old('sig', auth()->user()->sig) }}" readonly required>
+                                                @if ($errors->has('sig'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('sig') }}</strong>
+                                                    </span>
+                                                @endif
+                                                @if ($errors->has('sig'))
+                                                    <span class="invalid-feedback">
+                                                        <strong>{{ $errors->first('sig') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endhasrole
+
                                         <div class="form-group row">
                                             <label for="file" class="col-md-3 col-form-label text-md-right">Image</label>
                                             <div class="col-md-5">

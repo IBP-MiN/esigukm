@@ -23,6 +23,7 @@ class CreateMeetingTable extends Migration
             $table->string('location');
             $table->string('sig');
             $table->string('file_path');
+            $table->string('attend')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

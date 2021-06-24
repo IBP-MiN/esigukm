@@ -78,7 +78,7 @@
                       <table class="table">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">No.</th>
+
                             <th scope="col">Name</th>
                             <th scope="col">Matric Number</th>
                             <th scope="col">Phone Number</th>
@@ -89,10 +89,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $index => $user)
-                            @if($user->id != '1' && Auth::user()->sig == $user->sig)
+                            @foreach($users as $user)
+                            @if($user->id > '1' && Auth::user()->sig == $user->sig)
                             <tr>
-                                <th>{{$index +0}}</th>
                                 <th>{{$user->name}}</th>
                                 <th>{{$user->matric_no}}</th>
                                 <th>{{$user->phone_no}}</th>
@@ -115,7 +114,33 @@
                         </tbody>
                       </table>
                       @endhasrole
-                      {{$users->links() }}
+
+                      @hasrole('ajk')
+                      <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Matric Number</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">SIG</th>
+                            <th scope="col">Email</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as  $user)
+                            @if($user->id != '1' && Auth::user()->sig == $user->sig)
+                            <tr>
+                                <th>{{$user->name}}</th>
+                                <th>{{$user->matric_no}}</th>
+                                <th>{{$user->phone_no}}</th>
+                                <th>{{$user->sig}}</th>
+                                <th>{{$user->email}}</th>
+                            </tr>
+                            @endif
+                            @endforeach
+                        </tbody>
+                      </table>
+                      @endhasrole
                 </div>
             </div>
         </div>

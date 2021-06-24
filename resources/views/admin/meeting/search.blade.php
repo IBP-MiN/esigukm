@@ -38,7 +38,7 @@
                                 <th>{{$meeting->sig}}</th>
                                 @hasrole('admin')
                                 <th>
-                                    <a href="{{route('admin.meeting.show', $meeting->id)}}" class="float-left">
+                                    <a href="{{route('admin.meeting.details', $meeting->id)}}" class="float-left">
                                         <button type="button" class="btn btn-success btn-sm"> View</button>
                                     </a>
                                     <a href="{{route('admin.meeting.edit', $meeting->id)}}" class="float-left">
@@ -53,7 +53,7 @@
 
                                 @hasrole('lecturer')
                                 <th>
-                                    <a href="{{route('admin.meeting.show', $meeting->id)}}" class="float-left">
+                                    <a href="{{route('admin.meeting.details', $meeting->id)}}" class="float-left">
                                         <button type="button" class="btn btn-success btn-sm"> View</button>
                                     </a>
                                     <a href="{{route('admin.meeting.edit', $meeting->id)}}" class="float-left">
@@ -69,7 +69,7 @@
 
                                 @hasrole('ajk')
                                 <th>
-                                    <a href="{{route('admin.meeting.show', $meeting->id)}}" class="float-left">
+                                    <a href="{{route('admin.meeting.details', $meeting->id)}}" class="float-left">
                                         <button type="button" class="btn btn-success btn-sm"> View</button>
                                     </a>
                                     <a href="{{route('admin.meeting.edit', $meeting->id)}}" class="float-left">

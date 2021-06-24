@@ -41,4 +41,8 @@ class User extends Authenticatable
     public function meetings(){
         return $this->hasMany(Meeting::class);
     }
+
+    public function follower(){
+        return $this->hasMany(Follower::class);
+    }
 }

@@ -31,33 +31,75 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $meeting = Meeting::all();
-        return view('home')->with('meetings', Meeting::paginate(10));
+        $meetings = Meeting::all();
+        $attends = Follower::all();
+        return view('home', compact('meetings', 'attends'));
     }
 
     public function userMeeting()
     {
-        $meeting = Meeting::all();
-        return view('meeting.index')->with('meetings', Meeting::paginate(10));
+        $user = Auth::user()->get();
+        $meetings= Meeting::all();
+        $attends = Follower::all();
+        
+        return view('meeting.index', compact('meetings', 'attends'));
     }
 
-    public function showMeeting($user_id){
+    public function showMeeting($id){
 
-        $meeting = Meeting::find($user_id);
-        return view('meeting.show')->with('meeting', $meeting);
+        $meeting = Meeting::find($id);
+        $attend = Follower::where('id', '=', '1')->get();
+        return view('meeting.show', compact('meeting', 'attend'));
+
+    }
+
+    public function detailsMeeting($id){
+
+        $meeting = Meeting::find($id);
+        $attend = Follower::where('id', '=', '1')->get();
+        return view('meeting.details', compact('meeting', 'attend'));
 
     }
 
     public function attdMeeting(Request $request){
 
-        $attd = new Follower([
-            "meeting_id"=>$request->get()->id,
-            "user_id"=>$request->get()->user_id,
+         // Validate the inputs
+         $request->validate([
+            'attendance' => 'required',
+
         ]);
 
-        $attd->save();
+            $attd = new Follower([
+                "attendance" => $request->get('attendance'),
+                "user_id"=>$request->user()->id,
+                "meeting_id" => $request->get('meeting_id'),
+            ]);
 
-        return redirect()->route('home')->with('success', 'Thank you for attend this meeting.');
+            $user = Auth::user()->get();
+            $meeting = Meeting::where('id', '=', 'meeting_id')->get();
 
+            if(Auth::user()->id == $attd->user_id && $attd->attendance == 'attend'){
+
+            $attd->save();
+            return redirect()->route('home')->with('success', 'Thank you for attending this meeting');
+
+            }
+            else
+            return redirect()->route('home')->with('warning', 'You already join this meeting!');
+            
+            
+
+    }
+
+    public function searchMeeting()
+    {
+        $q = Input::get ( 'q' );
+        $meetings = Meeting::where('title','LIKE','%'.$q.'%')->get();
+
+        if(count($meetings) > 0)
+
+        return view('meeting.search')->withDetails($meetings)->withQuery ( $q );
+        else 
+        return redirect()->route('meeting.index')->with('warning', 'Meeting not found!');
     }
 }

@@ -34,6 +34,7 @@
         html, body {
             background: url("https://cdn2.hubspot.net/hubfs/202339/canvas/images/parallax/Website-Design-Background.png") no-repeat center center fixed;
             margin: 0;
+            font-size: 17px;
         }
     </style>
 </head>
@@ -78,15 +79,15 @@
                                     <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     @hasrole('admin')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">Manage Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">Manage Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">Manage Meetings</a>
                                     @endhasrole
                                     @hasrole('ajk')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">View Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">View Meetings</a>
                                     @endhasrole
                                     @hasrole('lecturer')
                                     <a class="dropdown-item" href="{{route('admin.users.index')}}">View Users</a>
-                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">View Meeting</a>
+                                    <a class="dropdown-item" href="{{route('admin.meeting')}}">View Meetings</a>
                                     @endhasrole
                                     @hasrole('user')
                                     <a class="dropdown-item" href="{{route('meeting.index')}}">My Meeting</a>

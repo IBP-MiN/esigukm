@@ -17,4 +17,8 @@ class Meeting extends Model
         return $this->belongsTo(User::class, 'user_id');
         
     }
+
+    public function follower(){
+        return $this->belongsTo(Follower::class);
+    }
 }

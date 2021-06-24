@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Meeting Details</div>
-                    <a class="btn btn-secondary" href="{{ route('home') }}">
+                    <a class="btn btn-secondary" href="{{ route('meeting.index') }}">
                         {{ __('Back') }}
                     </a>
                     <div class="card-body">
@@ -41,19 +41,12 @@
                                               <p class="card-text">Time End: {{ \Carbon\Carbon::parse($meeting->meeting_end_time)->format('g:i a') }}</p>
                                               <p class="card-text">Location: {{$meeting->location}}</p>
                                               <p class="card-text">SIG: {{$meeting->sig}}</p>
+                                              @forelse($attend as $attends)
+                                              <p class="card-text">Status: {{$attends->attendance}}</p>
+                                              @empty
+                                              <p class="card-text">Attend: Not Attend}</p>
+                                              @endif
                                              
-                                              @if ($current_date_time = \Carbon\Carbon::now() > $meeting->meeting_date)
-                                                    <h3 class="card-title">Meeting Has Expired</h3>
-                                                @else
-                                                    <form action="{{ route('meeting.attend') }}" method="POST">
-                                                        <input id="attendance" type="hidden" value="attend"
-                                                            name="attendance">
-                                                        <input id="meeting_id" type="hidden" value="{{ $meeting->id }}"
-                                                            name="meeting_id">
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-secondary">Attend</button>
-                                                    </form>
-                                                @endif
                                             </div>
                                             <div class="card-footer text-muted">
                                             </div>

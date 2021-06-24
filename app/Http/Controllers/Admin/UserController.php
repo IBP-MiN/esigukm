@@ -22,7 +22,8 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user()->roles->first();
-        return view('admin.users.index')->with('users', User::paginate(10));
+        $user = User::all();
+        return view('admin.users.index', ['users'=> $user]);
     }
 
     
@@ -94,13 +95,15 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('warning', 'User not found!');
     }
     
-    // MEETING
+    //////////////////////////////////////////////////////////////////////////////////// MEETING////////////////////////////////////////////////////////////////////////////
 
     public function indexMeeting()
     {
         $user = Auth::user()->get();
-        $meeting = Meeting::all();
-        return view('admin.meeting.index')->with('meetings', Meeting::paginate(10), 'users', $user);
+        $meetings= Meeting::all();
+        $attends = Follower::all();
+        
+        return view('admin.meeting.index', compact('meetings', 'attends'));
     }
 
     public function createMeeting()
@@ -151,12 +154,25 @@ class UserController extends Controller
         }
 
         return redirect()->route('admin.meeting')->with('success', 'Meeting has been created.');
+        
     }
     public function showMeeting($id)
     {
-        $meeting = Meeting::find($id);
+        $user = Auth::user()->get();
+        $meeting = Meeting::findOrFail($id);
+        $attend = Follower::where('meeting_id', $meeting->id)->get();
+        $attendcount = $attend->count();
+        return view('admin.meeting.show', compact('meeting', 'attend', 'attendcount'));
+    }
+
+    public function detailsMeeting($id)
+    {
+        $user = Auth::user()->get();
+        $meeting = Meeting::findOrFail($id);
+        $attend = Follower::where('meeting_id', '=', $meeting->id)->get();
+        $attendcount = $attend->count();
         
-        return view('admin.meeting.show', ['meeting' => $meeting]);
+        return view('admin.meeting.details', compact('meeting', 'attend', 'attendcount'));
     }
 
     public function editMeeting($id)
@@ -225,7 +241,7 @@ class UserController extends Controller
     public function searchMeeting()
     {
         $q = Input::get ( 'q' );
-        $meetings = Meeting::where('title','LIKE','%'.$q.'%')->orWhere('sig','LIKE','%'.$q.'%')->get();
+        $meetings = Meeting::where('title','LIKE','%'.$q.'%')->get();
 
         if(count($meetings) > 0)
 

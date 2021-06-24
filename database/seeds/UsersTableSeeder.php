@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
             'name'=> 'Lecturer',
             'matric_no'=>'K123456',
             'phone_no'=>'0123456789',
-            'sig'=> 'MAD',
+            'sig'=> 'PCC',
             'email'=> 'lecturer@gmail.com',
             'password'=> bcrypt('lecturer')
 
@@ -47,7 +47,7 @@ class UsersTableSeeder extends Seeder
             'name'=> 'Ajk',
             'matric_no'=>'AJK123456',
             'phone_no'=>'0123456789',
-            'sig'=> 'MAD',
+            'sig'=> 'PCC',
             'email'=> 'ajk@gmail.com',
             'password'=> bcrypt('ajk')
 
@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
             'name'=> 'User',
             'matric_no'=>'U123456',
             'phone_no'=>'0123456789',
-            'sig'=> 'VIC',
+            'sig'=> 'PCC',
             'email'=> 'user@gmail.com',
             'password'=> bcrypt('user')
 
@@ -70,6 +70,16 @@ class UsersTableSeeder extends Seeder
             'sig'=> 'VIC',
             'email'=> 'a175316@siswa.ukm.edu.my',
             'password'=> bcrypt('aini')
+
+        ]);
+
+        $user = User::create([
+            'name'=> 'Akeem Daniel Bin Mohd Sunny Cho',
+            'matric_no'=>'A175432',
+            'phone_no'=>'0196548759',
+            'sig'=> 'VIC',
+            'email'=> 'akeem@gmail.com',
+            'password'=> bcrypt('akeem')
 
         ]);
 

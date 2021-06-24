@@ -32,6 +32,7 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->
     Route::get('/meeting/create', 'UserController@createMeeting')->name('meeting.create');
     Route::post('/meeting/store', 'UserController@storeMeeting')->name('meeting.store');
     Route::get('/meeting/{id}', 'UserController@showMeeting')->name('meeting.show');
+    Route::get('/meeting/details/{id}', 'UserController@detailsMeeting')->name('meeting.details');
     Route::get('/meeting/edit/{id}', 'UserController@editMeeting')->name('meeting.edit');
     Route::post('/meeting/update/{id}', 'UserController@updateMeeting')->name('meeting.update');
     Route::post('/meeting/destroy/{id}', 'UserController@destroyMeeting')->name('meeting.destroy');
@@ -49,5 +50,7 @@ Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile
 //Meeting
 Route::get('/meeting', 'Homecontroller@userMeeting')->name('meeting.index');
 Route::get('/meeting/{id}', 'Homecontroller@showMeeting')->name('meeting.show');
+Route::get('/meeting/details/{id}', 'Homecontroller@detailsMeeting')->name('meeting.details');
 // Confirmation for the meeting
 Route::post('/attend/', 'Homecontroller@attdMeeting')->name('meeting.attend');
+Route::post('/meeting/search/', 'Homecontroller@searchMeeting')->name('meeting.search');
